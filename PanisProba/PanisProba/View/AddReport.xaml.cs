@@ -1,6 +1,4 @@
-﻿using PanisProba.EntityFrameworkModel;
-using PanisProba.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,20 +15,13 @@ using System.Windows.Shapes;
 namespace PanisProba.View
 {
     /// <summary>
-    /// Interaction logic for EmloyeeMainView.xaml
+    /// Interaction logic for AddReport.xaml
     /// </summary>
-    public partial class EmloyeeMainView : Window
+    public partial class AddReport : Window
     {
-        public EmloyeeMainView()
+        public AddReport()
         {
             InitializeComponent();
-            
-        }
-        
-        public EmloyeeMainView(tblEmployee employee)
-        {
-            InitializeComponent();
-            DataContext = new EmloyeeMainViewModel(this, employee);
         }
     }
 }

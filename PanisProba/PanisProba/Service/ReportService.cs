@@ -15,8 +15,8 @@ namespace PanisProba.Service
             {
                 using (WorkingHoursDBEntities context = new WorkingHoursDBEntities())
                 {
-                    List<tblReport> list = new List<tblReport>();
-                    list = (from x in context.tblReports select x).ToList();
+                    List<vwReport> list = new List<vwReport>();
+                    list = (from x in context.vwReports select x).ToList();
                     return list;
                 }
             }
@@ -33,8 +33,8 @@ namespace PanisProba.Service
             {
                 using (WorkingHoursDBEntities context = new WorkingHoursDBEntities())
                 {
-                    List<tblReport> list = new List<tblReport>();
-                    list = (from x in context.tblReports
+                    List<vwReport> list = new List<vwReport>();
+                    list = (from x in context.vwReports
                             where x.EmployeeID == employee.EmployeeID
                             select x).ToList();
                     return list;
@@ -53,8 +53,8 @@ namespace PanisProba.Service
             {
                 using (WorkingHoursDBEntities context = new WorkingHoursDBEntities())
                 {
-                    List<tblReport> list = new List<tblReport>();
-                    list = (from x in context.tblReports
+                    List<vwReport> list = new List<vwReport>();
+                    list = (from x in context.vwReports
                             where x.EmployeeID == employee.EmployeeID
                             && x.DateOfReport == date
                             select x).ToList();
