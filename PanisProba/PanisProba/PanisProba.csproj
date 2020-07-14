@@ -109,6 +109,8 @@
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddMenagerViewModel.cs" />
     <Compile Include="ViewModel\AddReportViewModel.cs" />
+    <Compile Include="ViewModel\EditEmployeeViewModel.cs" />
+    <Compile Include="ViewModel\EditReportViewModel.cs" />
     <Compile Include="ViewModel\EmloyeeMainViewModel.cs" />
     <Compile Include="ViewModel\ShowEmployeesViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -125,6 +127,12 @@
     </Compile>
     <Compile Include="View\AddReport.xaml.cs">
       <DependentUpon>AddReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditEmployee.xaml.cs">
+      <DependentUpon>EditEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditReport.xaml.cs">
+      <DependentUpon>EditReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EmloyeeMainView.xaml.cs">
       <DependentUpon>EmloyeeMainView.xaml</DependentUpon>
@@ -168,6 +176,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

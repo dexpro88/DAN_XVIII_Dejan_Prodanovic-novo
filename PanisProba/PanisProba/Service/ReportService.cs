@@ -63,6 +63,32 @@ namespace PanisProba.Service
             }
         }
 
+        public tblReport EditReport(vwReport report)
+        {
+            try
+            {
+                using (WorkingHoursDBEntities context = new WorkingHoursDBEntities())
+                {
+                  
+                    tblReport reportToEdit = (from u in context.tblReports
+                                              where u.ReportID == report.ReportID select u).First();
+
+                    reportToEdit.Position = report.Position;
+                    reportToEdit.Project = report.Project;
+                    reportToEdit.NumberOfHours = report.NumberOfHours;
+
+                    context.SaveChanges();
+                  
+                    return reportToEdit;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
         public List<vwReport> GetAllReports()
         {
             try

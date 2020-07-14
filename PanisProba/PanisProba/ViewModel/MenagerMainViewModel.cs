@@ -194,8 +194,40 @@ namespace PanisProba.ViewModel
         {
             return true;
         }
+        private ICommand editMenager;
+        public ICommand EditMenager
+        {
+            get
+            {
+                if (editMenager == null)
+                {
+                    editMenager = new RelayCommand(param => EditMenagerExecute(),
+                        param => CanEditMenagerExecute());
+                }
+                return editMenager;
+            }
+        }
 
-       
+        private void EditMenagerExecute()
+        {
+            try
+            {
+                AddMenagerView addMenagerView = new AddMenagerView();
+
+                addMenagerView.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private bool CanEditMenagerExecute()
+        {
+            return true;
+        }
+
+
 
         private ICommand close;
         public ICommand Close

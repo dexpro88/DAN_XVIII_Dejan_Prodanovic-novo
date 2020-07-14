@@ -96,39 +96,35 @@ namespace PanisProba.ViewModel
             return true;
         }
 
-        private ICommand addCommand;
-        public ICommand AddCommand
+        private ICommand editReport;
+        public ICommand EditReport
         {
             get
             {
-                if (addCommand == null)
+                if (editReport == null)
                 {
-                    addCommand = new RelayCommand(param => AddCommandExecute(),
-                        addCommand => CanAddCommandExecute());
+                    editReport = new RelayCommand(param => EditReportExecute(), param => CanEditReportExecute());
                 }
-                return addCommand;
+                return editReport;
             }
         }
 
-        private void AddCommandExecute()
+        private void EditReportExecute()
         {
             try
             {
-                AddEmployeeView addEmployee = new AddEmployeeView();
+                EditReport editReport = new EditReport(SelectedReport, EmployeeLogedIn);
 
-                addEmployee.ShowDialog();
+                editReport.ShowDialog();
 
-
-                //EmployeeList = employeeService.GetAllNonManagerEmployees();
-
+                ReportList = reportService.GetAllReports();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
-
-        private bool CanAddCommandExecute()
+        private bool CanEditReportExecute()
         {
             return true;
         }

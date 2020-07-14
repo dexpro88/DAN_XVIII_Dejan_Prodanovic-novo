@@ -17,7 +17,7 @@ namespace PanisProba.Service
                 {
 
                     tblEmployee newEmployee = new tblEmployee();
-                    newEmployee.FirstName = employee.LastName;
+                    newEmployee.FirstName = employee.FirstName;
                     newEmployee.LastName = employee.LastName;
                     newEmployee.JMBG = employee.JMBG;
                     newEmployee.Email = employee.Email;
@@ -69,6 +69,41 @@ namespace PanisProba.Service
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+            }
+        }
+
+        public tblEmployee EditEmployee(tblEmployee employee)
+        {
+            try
+            {
+                using (WorkingHoursDBEntities context = new WorkingHoursDBEntities())
+                {
+
+                    tblEmployee employeeToEdit = (from u in context.tblEmployees
+                                              where u.EmployeeID == employee.EmployeeID
+                                              select u).First();
+
+                    employeeToEdit.FirstName = employee.FirstName;
+                    employeeToEdit.LastName = employee.LastName;
+                    employeeToEdit.JMBG = employee.JMBG;
+                    employeeToEdit.Email = employee.Email;
+                    employeeToEdit.DateOfBirth = employee.DateOfBirth;
+                    employeeToEdit.IsMenager = false;
+                    employeeToEdit.Position = employee.Position;
+                    employeeToEdit.Salary = employee.Salary;
+                    employeeToEdit.AccountNumber = employee.AccountNumber;
+                    employeeToEdit.Username = employee.Username;
+                    employeeToEdit.Passwd = employee.Passwd;
+
+                    context.SaveChanges();
+
+                    return employee;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
             }
         }
 

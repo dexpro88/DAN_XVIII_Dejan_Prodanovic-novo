@@ -130,6 +130,43 @@ namespace PanisProba.ViewModel
             return true;
         }
 
+        private ICommand editCommand;
+        public ICommand EditCommand
+        {
+            get
+            {
+                if (editCommand == null)
+                {
+                    editCommand = new RelayCommand(param => EditCommandExecute(),
+                        editCommand => CanEditCommandExecute());
+                }
+                return editCommand;
+            }
+        }
+
+        private void EditCommandExecute()
+        {
+            try
+            {
+                EditEmployee editEmployee = new EditEmployee(SelectedEmployee);
+
+                editEmployee.ShowDialog();
+
+
+                EmployeeList = employeeService.GetAllNonManagerEmployees();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private bool CanEditCommandExecute()
+        {
+            return true;
+        }
+
         private ICommand deleteEmployee;
         public ICommand DeleteEmployee
         {

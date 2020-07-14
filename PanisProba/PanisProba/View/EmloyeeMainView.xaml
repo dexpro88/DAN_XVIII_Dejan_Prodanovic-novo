@@ -62,9 +62,11 @@
                 <DataGridTextColumn Header="Full name"
                                     Binding="{Binding FullName}" />
                 <DataGridTextColumn Header="Date of Report"
-                                    Binding="{Binding DateOfReport}" />
+                                    Binding="{Binding DateOfReport,StringFormat='{}{0:dd/MM/yyyy}'}" />
                 <DataGridTextColumn Header="Position"
                                     Binding="{Binding Position}" />
+                <DataGridTextColumn Header="Project"
+                                    Binding="{Binding Project}" />
                 <DataGridTextColumn Header="Number of Hours"
                                     Binding="{Binding NumberOfHours}" />
                 

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Height="350"
-        Width="600"
+        Width="700"
         Background="#2e3137">
     <Window.Resources>
         <Style TargetType="Button">
@@ -60,14 +60,16 @@
                   Foreground="Black"
                   FontWeight="Bold">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Full name"
+                <DataGridTextColumn Header="Employee name"
                                     Binding="{Binding FullName}" />
                 <DataGridTextColumn Header="Position"
                                     Binding="{Binding Position}" />
                 <DataGridTextColumn Header="Project"
                                     Binding="{Binding Project}" />
-                <DataGridTextColumn Header="Email"
-                                    Binding="{Binding Project}" />
+                <DataGridTextColumn Header="Number of hours"
+                                    Binding="{Binding NumberOfHours}" />
+                <DataGridTextColumn Header="Date"
+                                    Binding="{Binding DateOfReport,StringFormat='{}{0:dd/MM/yyyy}'}" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="3"
