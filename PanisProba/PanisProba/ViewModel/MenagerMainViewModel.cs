@@ -1,0 +1,160 @@
+﻿using PanisProba.Command;
+using PanisProba.View;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+
+namespace PanisProba.ViewModel
+{
+    class MenagerMainViewModel:ViewModelBase
+    {
+        MenagerMainView main;
+        #region Constructor
+        public MenagerMainViewModel(MenagerMainView mainOpen)
+        {
+
+            main = mainOpen;
+             
+        }
+
+
+        #endregion
+
+        #region Commands
+
+        private ICommand logoutCommmand;
+        public ICommand LogoutCommmand
+        {
+            get
+            {
+                if (logoutCommmand == null)
+                {
+                    logoutCommmand = new RelayCommand(param => LogoutExecute(), param => CanLogoutExecute());
+                }
+                return logoutCommmand;
+            }
+        }
+
+        private void LogoutExecute()
+        {
+            try
+            {
+                LoginView loginView = new LoginView();
+                main.Close();
+                loginView.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanLogoutExecute()
+        {
+            return true;
+        }
+
+        private ICommand showEmoloyeesCommand;
+        public ICommand ShowEmoloyeesCommand
+        {
+            get
+            {
+                if (showEmoloyeesCommand == null)
+                {
+                    showEmoloyeesCommand = new RelayCommand(param => ShowEmoloyeesExecute(), 
+                        param => CanShowEmoloyeesExecute());
+                }
+                return showEmoloyeesCommand;
+            }
+        }
+
+        private void ShowEmoloyeesExecute()
+        {
+            try
+            {
+                ShowEmployeesView employeesView = new ShowEmployeesView();
+                main.Close();
+                employeesView.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanShowEmoloyeesExecute()
+        {
+            return true;
+        }
+
+        private ICommand addMenager;
+        public ICommand AddMenager
+        {
+            get
+            {
+                if (addMenager == null)
+                {
+                    addMenager = new RelayCommand(param => AddMenagerExecute(), 
+                        param => CanAddMenagerExecute());
+                }
+                return addMenager;
+            }
+        }
+
+        private void AddMenagerExecute()
+        {
+            try
+            {
+                AddMenagerView addMenagerView = new AddMenagerView();
+               
+                addMenagerView.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private bool CanAddMenagerExecute()
+        {
+            return true;
+        }
+
+       
+
+        private ICommand close;
+        public ICommand Close
+        {
+            get
+            {
+                if (close == null)
+                {
+                    close = new RelayCommand(param => CloseExecute(), param => CanCloseExecute());
+                }
+                return close;
+            }
+        }
+
+        private void CloseExecute()
+        {
+            try
+            {
+                main.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private bool CanCloseExecute()
+        {
+            return true;
+        }
+        #endregion
+
+
+    }
+}
