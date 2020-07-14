@@ -95,6 +95,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkingHoursDataBaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Validation\ValidationClass.cs" />
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddMenagerViewModel.cs" />
     <Compile Include="ViewModel\EmloyeeMainViewModel.cs" />
@@ -191,9 +192,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Validation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{92bf7b60-5d52-4d45-ad4a-e56e12448904}</Project>

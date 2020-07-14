@@ -95,8 +95,8 @@
                     Grid.Row="8">
             <Button Command="{Binding Save}"
                     Content="Save" />
-            <Button Command="{Binding Close}"
-                    Content="Close" />
+            <Button Command="{Binding Logout}"
+                    Content="Logout" />
         </StackPanel>
     </Grid>
 </Window>

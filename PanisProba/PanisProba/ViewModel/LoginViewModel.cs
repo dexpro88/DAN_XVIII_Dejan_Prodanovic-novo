@@ -80,6 +80,13 @@ namespace PanisProba.ViewModel
                 //        }
                 //    }
                 //}
+                if (userName.Equals("WPFadmin")&&password.Equals("WPFadmin"))
+                {
+                    AddMenagerView addMenager = new AddMenagerView();
+                    view.Close();
+                    addMenager.Show();
+                    return;
+                }
                 List<Employee> employees = employeeService.GetAllEmployees();
                 Employee employeeDb = null;
                 foreach (var employee in employees)
@@ -117,16 +124,6 @@ namespace PanisProba.ViewModel
         }
         private bool CanSubmitCommandExecute()
         {
-
-
-            //if (string.IsNullOrEmpty(UserName))
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    return true;
-            //}
             return true;
         }
 
