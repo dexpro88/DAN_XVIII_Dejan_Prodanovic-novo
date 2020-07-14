@@ -100,8 +100,10 @@
     <Compile Include="Service\IAccessLevelService.cs" />
     <Compile Include="Service\IEmployeeService.cs" />
     <Compile Include="Service\IMenagerService.cs" />
+    <Compile Include="Service\IReportService.cs" />
     <Compile Include="Service\ISectorService.cs" />
     <Compile Include="Service\MenagerService.cs" />
+    <Compile Include="Service\ReportService.cs" />
     <Compile Include="Service\SectorService.cs" />
     <Compile Include="Validation\ValidationClass.cs" />
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="ViewModel\ShowEmployeesViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MenagerMainViewModel.cs" />
+    <Compile Include="ViewModel\ShowEmplloyeesReadOnlyViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\AddEmployeeView.xaml.cs">
       <DependentUpon>AddEmployeeView.xaml</DependentUpon>
@@ -128,6 +131,9 @@
     </Compile>
     <Compile Include="View\MenagerMainView.xaml.cs">
       <DependentUpon>MenagerMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowEmployeesReadOnly.xaml.cs">
+      <DependentUpon>ShowEmployeesReadOnly.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MenagerMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowEmployeesReadOnly.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

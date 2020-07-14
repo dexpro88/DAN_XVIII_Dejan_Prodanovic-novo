@@ -1,5 +1,4 @@
-﻿using PanisProba.EntityFrameworkModel;
-using PanisProba.ViewModel;
+﻿using PanisProba.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,20 +16,14 @@ using System.Windows.Shapes;
 namespace PanisProba.View
 {
     /// <summary>
-    /// Interaction logic for MenagerMainView.xaml
+    /// Interaction logic for ShowManagersReadOnly.xaml
     /// </summary>
-    public partial class MenagerMainView : Window
+    public partial class ShowManagersReadOnly : Window
     {
-        public MenagerMainView()
+        public ShowManagersReadOnly()
         {
             InitializeComponent();
-            DataContext = new MenagerMainViewModel(this);
-        }
-        public MenagerMainView(tblEmployee employee)
-        {
-            InitializeComponent();
-            DataContext = new MenagerMainViewModel(this, employee);
+            DataContext = new ShowEmplloyeesReadOnlyViewModel(this);
         }
     }
 }
- 

@@ -203,6 +203,7 @@ namespace PanisProba.ViewModel
                 }
                 Menager.AccessLevelID = AccessLevel.ID;
                 Menager.SectorID = Sector.SectorID;
+                Menager.DateOfBirth = DateOfBirth;
                 managerService.AddMenager(Menager);
                 Menager = new tblEmployee();
                 MessageBox.Show("You successfully added a manager.");

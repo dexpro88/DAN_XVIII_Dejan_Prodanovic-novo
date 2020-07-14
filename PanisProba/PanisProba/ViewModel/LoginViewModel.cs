@@ -104,13 +104,13 @@ namespace PanisProba.ViewModel
                 {
                     if (employeeDb.IsMenager==true)
                     {
-                        MenagerMainView menagerMainViewModel = new MenagerMainView();
+                        MenagerMainView menagerMainViewModel = new MenagerMainView(employeeDb);
                         view.Close();
                         menagerMainViewModel.Show();
                     }
                     else
                     {
-                        EmloyeeMainView employeeMainView = new EmloyeeMainView();
+                        EmloyeeMainView employeeMainView = new EmloyeeMainView(employeeDb);
                         employeeMainView.Show();
                         view.Close();
                     }

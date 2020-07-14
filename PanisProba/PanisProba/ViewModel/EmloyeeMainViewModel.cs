@@ -1,4 +1,6 @@
 ﻿using PanisProba.Command;
+using PanisProba.EntityFrameworkModel;
+using PanisProba.Service;
 using PanisProba.View;
 using System;
 using System.Collections.Generic;
@@ -13,14 +15,44 @@ namespace PanisProba.ViewModel
     class EmloyeeMainViewModel:ViewModelBase
     {
         EmloyeeMainView view;
+        IReportService reportService;
 
         #region Constructors
-        public EmloyeeMainViewModel(EmloyeeMainView emloyeeMainViewOpen)
+        public EmloyeeMainViewModel(EmloyeeMainView emloyeeMainViewOpen,tblEmployee logedEmpl)
         {
             view = emloyeeMainViewOpen;
+            reportService = new ReportService();
+            ReportList = reportService.GetAllReportsOfEmployee(logedEmpl);
+            //EmployeeLogedIn = logedEmpl;
         }
         #endregion
 
+        //private tblEmployee employeeLogedIn;
+        //public tblEmployee EmployeeLogedIn
+        //{
+        //    get
+        //    {
+        //        return employeeLogedIn;
+        //    }
+        //    set
+        //    {
+        //        employeeLogedIn = value;
+        //        OnPropertyChanged("EmployeeLogedIn");
+        //    }
+        //}
+        private List<vwReport> reportList;
+        public List<vwReport> ReportList
+        {
+            get
+            {
+                return reportList;
+            }
+            set
+            {
+                reportList = value;
+                OnPropertyChanged("ReportList");
+            }
+        }
         #region Commands
 
         private ICommand logoutCommmand;

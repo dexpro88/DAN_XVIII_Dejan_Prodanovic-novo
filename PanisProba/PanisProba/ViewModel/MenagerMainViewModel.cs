@@ -1,4 +1,5 @@
 ﻿using PanisProba.Command;
+using PanisProba.EntityFrameworkModel;
 using PanisProba.View;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,30 @@ namespace PanisProba.ViewModel
              
         }
 
+        public MenagerMainViewModel(MenagerMainView mainOpen, tblEmployee logedEmployee)
+        {
+
+            main = mainOpen;
+            MenagerLogedIn = logedEmployee;
+            
+        }
+
 
         #endregion
+
+        private tblEmployee menagerLogedIn;
+        public tblEmployee MenagerLogedIn
+        {
+            get
+            {
+                return menagerLogedIn;
+            }
+            set
+            {
+                menagerLogedIn = value;
+                OnPropertyChanged("MenagerLogedIn");
+            }
+        }
 
         #region Commands
 
@@ -75,9 +98,19 @@ namespace PanisProba.ViewModel
         {
             try
             {
-                ShowEmployeesView employeesView = new ShowEmployeesView();
-                main.Close();
-                employeesView.ShowDialog();
+                if (MenagerLogedIn.AccessLevelID == 1)
+                {
+                    ShowEmployeesView employeesView = new ShowEmployeesView();
+                    main.Close();
+                    employeesView.ShowDialog();
+                }
+                else if (MenagerLogedIn.AccessLevelID == 2)
+                {
+                    ShowManagersReadOnly employeesView = new ShowManagersReadOnly();
+                    main.Close();
+                    employeesView.ShowDialog();
+                }
+             
             }
             catch (Exception ex)
             {

@@ -96,7 +96,7 @@ namespace PanisProba.ViewModel
                     MessageBox.Show("Salary has to be grater than zero.");
                     return;
                 }
-
+                Employee.DateOfBirth = DateOfBirth;
                 employeeService.AddEmployee(Employee);
                 view.Close();
             }
