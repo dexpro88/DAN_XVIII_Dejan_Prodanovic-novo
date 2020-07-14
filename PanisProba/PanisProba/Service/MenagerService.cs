@@ -50,7 +50,7 @@ namespace PanisProba.Service
             }
         }
 
-        public tblEmployee GetManagerByJMBG(string JMBG)
+        public tblEmployee GetEmployeeByJMBG(string JMBG)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace PanisProba.Service
             }
         }
 
-        public tblEmployee GetManagerByUsername(string username)
+        public tblEmployee GetEmployeeByUsername(string username)
         {
             try
             {

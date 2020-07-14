@@ -1,11 +1,9 @@
 ﻿using PanisProba.Command;
-using PanisProba.Model;
+using PanisProba.EntityFrameworkModel;
+using PanisProba.Service;
 using PanisProba.View;
-using PanisService;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -22,7 +20,7 @@ namespace PanisProba.ViewModel
             view = employeesOpen;
             employeeService = new EmployeeService();
 
-            EmployeeList = employeeService.GetAllNonMenagerEmployees();
+            EmployeeList = employeeService.GetAllNonManagerEmployees();
             //selectedEmployee = new Employee();
 
         }
@@ -31,8 +29,8 @@ namespace PanisProba.ViewModel
         #endregion
 
         #region Properties
-        private List<Employee> employeeList;
-        public List<Employee> EmployeeList
+        private List<tblEmployee> employeeList;
+        public List<tblEmployee> EmployeeList
         {
             get
             {
@@ -45,8 +43,8 @@ namespace PanisProba.ViewModel
             }
         }
 
-        private Employee selectedEmployee;
-        public Employee SelectedEmployee
+        private tblEmployee selectedEmployee;
+        public tblEmployee SelectedEmployee
         {
             get
             {
@@ -116,7 +114,7 @@ namespace PanisProba.ViewModel
                 addEmployee.ShowDialog();
 
                
-                EmployeeList = employeeService.GetAllNonMenagerEmployees();
+                EmployeeList = employeeService.GetAllNonManagerEmployees();
                 
             }
             catch (Exception ex)
@@ -150,10 +148,10 @@ namespace PanisProba.ViewModel
             {
                 if (MessageBox.Show("Delete selected row?", "Be sure!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    employeeService.DeleteEmployee(SelectedEmployee.ID);
+                    employeeService.DeleteEmployee(SelectedEmployee.EmployeeID);
                 }
                
-                EmployeeList = employeeService.GetAllNonMenagerEmployees();
+                EmployeeList = employeeService.GetAllNonManagerEmployees();
                 
             }
             catch (Exception ex)

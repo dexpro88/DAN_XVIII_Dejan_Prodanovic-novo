@@ -10,7 +10,7 @@ namespace PanisProba.Service
     interface IMenagerService
     {
         tblEmployee AddMenager(tblEmployee menager);
-        tblEmployee GetManagerByJMBG(string JMBG);
-        tblEmployee GetManagerByUsername(string username);
+        tblEmployee GetEmployeeByJMBG(string JMBG);
+        tblEmployee GetEmployeeByUsername(string username);
     }
 }

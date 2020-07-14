@@ -66,8 +66,7 @@
                     Grid.Column="1"
                     Orientation="Vertical"
                     VerticalAlignment="Center">
-            <Button Command="{Binding AddMenager}"
-                    Content="Add menager" />
+             
             <Button Command="{Binding ShowEmoloyeesCommand}"
                     Content="Employees" />
             <Button Command="{Binding AboutCommand}"

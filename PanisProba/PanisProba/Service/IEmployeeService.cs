@@ -10,5 +10,8 @@ namespace PanisProba.Service
     interface IEmployeeService
     {
         List<tblEmployee> GetAllEmployees();
+        List<tblEmployee> GetAllNonManagerEmployees();
+        tblEmployee AddEmployee(tblEmployee employee);
+        void DeleteEmployee(int employeeID);
     }
 }

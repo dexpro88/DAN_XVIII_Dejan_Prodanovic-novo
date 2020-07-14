@@ -78,7 +78,7 @@
             <Label Content="Username:" />
             <TextBox Text="{Binding Employee.Username}" />
             <Label Content="Password:" />
-            <TextBox Text="{Binding Employee.Password}" />
+            <TextBox Text="{Binding Employee.Passwd}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"

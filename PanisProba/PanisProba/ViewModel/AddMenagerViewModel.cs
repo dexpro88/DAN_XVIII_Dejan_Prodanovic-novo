@@ -186,14 +186,14 @@ namespace PanisProba.ViewModel
                     MessageBox.Show("JMBG is not valid.");
                     return;
                 }
-                if (managerService.GetManagerByJMBG(Menager.JMBG)!=null)
+                if (managerService.GetEmployeeByJMBG(Menager.JMBG)!=null)
                 {
-                    MessageBox.Show("Manager with this JMBG already exists");
+                    MessageBox.Show("User with this JMBG already exists");
                     return;
                 }
-                if (managerService.GetManagerByUsername(Menager.Username) != null)
+                if (managerService.GetEmployeeByUsername(Menager.Username) != null)
                 {
-                    MessageBox.Show("Manager with this username already exists");
+                    MessageBox.Show("User with this username already exists");
                     return;
                 }
                 if (Menager.Salary<=0)
