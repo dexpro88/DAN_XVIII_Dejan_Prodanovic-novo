@@ -23,23 +23,23 @@ namespace PanisProba.ViewModel
             view = emloyeeMainViewOpen;
             reportService = new ReportService();
             ReportList = reportService.GetAllReportsOfEmployee(logedEmpl);
-            //EmployeeLogedIn = logedEmpl;
+             EmployeeLogedIn = logedEmpl;
         }
         #endregion
 
-        //private tblEmployee employeeLogedIn;
-        //public tblEmployee EmployeeLogedIn
-        //{
-        //    get
-        //    {
-        //        return employeeLogedIn;
-        //    }
-        //    set
-        //    {
-        //        employeeLogedIn = value;
-        //        OnPropertyChanged("EmployeeLogedIn");
-        //    }
-        //}
+        private tblEmployee employeeLogedIn;
+        public tblEmployee EmployeeLogedIn
+        {
+            get
+            {
+                return employeeLogedIn;
+            }
+            set
+            {
+                employeeLogedIn = value;
+                OnPropertyChanged("EmployeeLogedIn");
+            }
+        }
         private List<vwReport> reportList;
         public List<vwReport> ReportList
         {
@@ -54,7 +54,38 @@ namespace PanisProba.ViewModel
             }
         }
         #region Commands
+        private ICommand addReport;
+        public ICommand AddReport
+        {
+            get
+            {
+                if (addReport == null)
+                {
+                    addReport = new RelayCommand(param => AddReportExecute(), param => CanAddReportExecute());
+                }
+                return addReport;
+            }
+        }
 
+        private void AddReportExecute()
+        {
+            try
+            {
+                AddReport addReport = new AddReport(EmployeeLogedIn);
+                
+                addReport.ShowDialog();
+
+                ReportList = reportService.GetAllReportsOfEmployee(EmployeeLogedIn);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanAddReportExecute()
+        {
+            return true;
+        }
         private ICommand logoutCommmand;
         public ICommand LogoutCommmand
         {

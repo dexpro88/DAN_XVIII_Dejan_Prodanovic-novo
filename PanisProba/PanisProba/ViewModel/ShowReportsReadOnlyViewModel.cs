@@ -12,44 +12,43 @@ using System.Windows.Input;
 
 namespace PanisProba.ViewModel
 {
-    class ShowEmplloyeesReadOnlyViewModel:ViewModelBase
+    class ShowReportsReadOnlyViewModel:ViewModelBase
     {
-        ShowManagersReadOnly view;
-        IEmployeeService employeeService;
-        
-        #region Constructor
-        public ShowEmplloyeesReadOnlyViewModel(ShowManagersReadOnly employeesOpen, tblEmployee logedEmployee)
-        {
-            view = employeesOpen;
-            employeeService = new EmployeeService();
+        ShowReportsReadOnly view;
+        IReportService reportService;
 
-            EmployeeList = employeeService.GetAllNonManagerEmployees();
+        #region Constructor
+        public ShowReportsReadOnlyViewModel(ShowReportsReadOnly reportsOpen,tblEmployee logedEmpl)
+        {
+            view = reportsOpen;
+            reportService = new ReportService();
+
+            ReportList = reportService.GetAllReports();
             //selectedEmployee = new Employee();
-            EmployeeLogedIn = logedEmployee;
+            EmployeeLogedIn = logedEmpl;
         }
 
 
         #endregion
 
         #region Properties
-
         public tblEmployee EmployeeLogedIn { get; set; }
 
-        private List<tblEmployee> employeeList;
-        public List<tblEmployee> EmployeeList
+        private List<vwReport> reportList;
+        public List<vwReport> ReportList
         {
             get
             {
-                return employeeList;
+                return reportList;
             }
             set
             {
-                employeeList = value;
-                OnPropertyChanged("EmployeeList");
+                reportList = value;
+                OnPropertyChanged("ReportList");
             }
         }
 
-        
+
         #endregion
 
         #region Commands
@@ -85,7 +84,7 @@ namespace PanisProba.ViewModel
             return true;
         }
 
-        
+
 
         private ICommand backCommand;
         public ICommand BackCommand

@@ -17,20 +17,20 @@ using System.Windows.Shapes;
 namespace PanisProba.View
 {
     /// <summary>
-    /// Interaction logic for ShowManagersReadOnly.xaml
+    /// Interaction logic for ShowReportsReadOnly.xaml
     /// </summary>
-    public partial class ShowManagersReadOnly : Window
+    public partial class ShowReportsReadOnly : Window
     {
-        public ShowManagersReadOnly()
+        public ShowReportsReadOnly()
         {
             InitializeComponent();
-            //DataContext = new ShowEmplloyeesReadOnlyViewModel(this);
+            //DataContext = new ShowReportsReadOnlyViewModel(this);
         }
 
-        public ShowManagersReadOnly(tblEmployee employee)
+        public ShowReportsReadOnly(tblEmployee employee)
         {
             InitializeComponent();
-            DataContext = new ShowEmplloyeesReadOnlyViewModel(this, employee);
+            DataContext = new ShowReportsReadOnlyViewModel(this,employee);
         }
     }
 }

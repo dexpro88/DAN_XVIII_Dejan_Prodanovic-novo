@@ -4,23 +4,25 @@ using PanisProba.Service;
 using PanisProba.View;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace PanisProba.ViewModel
 {
-    class ShowEmployeesViewModel:ViewModelBase
+    class ShowReportsVIewModel:ViewModelBase
     {
-        ShowEmployeesView view;
-        IEmployeeService employeeService;
+        ShowReports view;
+        IReportService reportService;
         #region Constructor
-        public ShowEmployeesViewModel(ShowEmployeesView employeesOpen, tblEmployee logedEmployee)
+        public ShowReportsVIewModel(ShowReports reportsOpen, tblEmployee logedEmployee)
         {
-            view = employeesOpen;
-            employeeService = new EmployeeService();
+            view = reportsOpen;
+            reportService = new ReportService();
 
-            EmployeeList = employeeService.GetAllNonManagerEmployees();
+            ReportList = reportService.GetAllReports();
             //selectedEmployee = new Employee();
             EmployeeLogedIn = logedEmployee;
         }
@@ -31,31 +33,32 @@ namespace PanisProba.ViewModel
         #region Properties
         public tblEmployee EmployeeLogedIn { get; set; }
 
-        private List<tblEmployee> employeeList;
-        public List<tblEmployee> EmployeeList
+        private List<vwReport> reportList;
+        public List<vwReport> ReportList
         {
             get
             {
-                return employeeList;
+                return reportList;
             }
             set
             {
-                employeeList = value;
-                OnPropertyChanged("EmployeeList");
+                reportList = value;
+                OnPropertyChanged("ReportList");
             }
         }
 
-        private tblEmployee selectedEmployee;
-        public tblEmployee SelectedEmployee
+
+        private vwReport selectedReport;
+        public vwReport SelectedReport
         {
             get
             {
-                return selectedEmployee;
+                return selectedReport;
             }
             set
             {
-                selectedEmployee = value;
-                OnPropertyChanged("SelectedEmployee");
+                selectedReport = value;
+                OnPropertyChanged("SelectedReport");
             }
         }
         #endregion
@@ -115,9 +118,9 @@ namespace PanisProba.ViewModel
 
                 addEmployee.ShowDialog();
 
-               
-                EmployeeList = employeeService.GetAllNonManagerEmployees();
-                
+
+                //EmployeeList = employeeService.GetAllNonManagerEmployees();
+
             }
             catch (Exception ex)
             {
@@ -137,7 +140,7 @@ namespace PanisProba.ViewModel
             {
                 if (deleteEmployee == null)
                 {
-                    deleteEmployee = new RelayCommand(param => DeleteEmployeeExecute(), 
+                    deleteEmployee = new RelayCommand(param => DeleteEmployeeExecute(),
                         param => CanDeleteEmployeeExecute());
                 }
                 return deleteEmployee;
@@ -150,11 +153,11 @@ namespace PanisProba.ViewModel
             {
                 if (MessageBox.Show("Delete selected row?", "Be sure!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    employeeService.DeleteEmployee(SelectedEmployee.EmployeeID);
+                    reportService.DeleteReport(SelectedReport.ReportID);
                 }
-               
-                EmployeeList = employeeService.GetAllNonManagerEmployees();
-                
+
+                ReportList = reportService.GetAllReports();
+
             }
             catch (Exception ex)
             {
@@ -163,7 +166,7 @@ namespace PanisProba.ViewModel
         }
         private bool CanDeleteEmployeeExecute()
         {
-            if (SelectedEmployee == null)
+            if (SelectedReport == null)
             {
                 return false;
             }
@@ -189,7 +192,7 @@ namespace PanisProba.ViewModel
             try
             {
                 MenagerMainView menagerMainView = new MenagerMainView(EmployeeLogedIn);
-              
+
                 menagerMainView.Show();
                 view.Close();
             }
@@ -222,7 +225,7 @@ namespace PanisProba.ViewModel
         {
             try
             {
-               
+
                 view.Close();
             }
             catch (Exception ex)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PanisProba.EntityFrameworkModel;
+using PanisProba.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,12 @@ namespace PanisProba.View
         public AddReport()
         {
             InitializeComponent();
+            
+        }
+        public AddReport(tblEmployee employee)
+        {
+            InitializeComponent();
+            DataContext = new AddReportViewModel(this, employee);
         }
     }
 }

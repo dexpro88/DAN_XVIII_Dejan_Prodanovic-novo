@@ -1,4 +1,5 @@
-﻿using PanisProba.ViewModel;
+﻿using PanisProba.EntityFrameworkModel;
+using PanisProba.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,13 @@ namespace PanisProba.View
         public ShowEmployeesView()
         {
             InitializeComponent();
-            DataContext = new ShowEmployeesViewModel(this);
+            //DataContext = new ShowEmployeesViewModel(this);
+
+        }
+        public ShowEmployeesView(tblEmployee employee)
+        {
+            InitializeComponent();
+            DataContext = new ShowEmployeesViewModel(this, employee);
 
         }
         private void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

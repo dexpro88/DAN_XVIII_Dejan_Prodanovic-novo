@@ -100,13 +100,13 @@ namespace PanisProba.ViewModel
             {
                 if (MenagerLogedIn.AccessLevelID == 1)
                 {
-                    ShowEmployeesView employeesView = new ShowEmployeesView();
+                    ShowEmployeesView employeesView = new ShowEmployeesView(MenagerLogedIn);
                     main.Close();
                     employeesView.ShowDialog();
                 }
                 else if (MenagerLogedIn.AccessLevelID == 2)
                 {
-                    ShowManagersReadOnly employeesView = new ShowManagersReadOnly();
+                    ShowManagersReadOnly employeesView = new ShowManagersReadOnly(MenagerLogedIn);
                     main.Close();
                     employeesView.ShowDialog();
                 }
@@ -121,7 +121,47 @@ namespace PanisProba.ViewModel
         {
             return true;
         }
+        private ICommand showReportsCommand;
+        public ICommand ShowReportsCommand
+        {
+            get
+            {
+                if (showReportsCommand == null)
+                {
+                    showReportsCommand = new RelayCommand(param => ShowReportsCommandExecute(),
+                        param => CanShowReportsCommandExecute());
+                }
+                return showReportsCommand;
+            }
+        }
 
+        private void ShowReportsCommandExecute()
+        {
+            try
+            {
+                if (MenagerLogedIn.SectorID == 1)
+                {
+                    ShowReports reportsView = new ShowReports(MenagerLogedIn);
+                    main.Close();
+                    reportsView.ShowDialog();
+                }
+                else if (MenagerLogedIn.SectorID == 2)
+                {
+                    ShowReportsReadOnly reportsView = new ShowReportsReadOnly(MenagerLogedIn);
+                    main.Close();
+                    reportsView.ShowDialog();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanShowReportsCommandExecute()
+        {
+            return true;
+        }
         private ICommand addMenager;
         public ICommand AddMenager
         {

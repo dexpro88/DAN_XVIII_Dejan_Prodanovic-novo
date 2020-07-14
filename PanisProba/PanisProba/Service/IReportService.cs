@@ -12,6 +12,9 @@ namespace PanisProba.Service
         List<vwReport> GetAllReports();
         List<vwReport> GetAllReportsOfEmployeeByDate(DateTime date, tblEmployee employee);
         List<vwReport> GetAllReportsOfEmployee(tblEmployee employee);
+        tblReport AddReport(vwReport report);
+        void DeleteReport(int id);
+
 
     }
 }

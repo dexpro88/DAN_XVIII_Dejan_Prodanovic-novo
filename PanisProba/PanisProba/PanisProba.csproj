@@ -108,17 +108,23 @@
     <Compile Include="Validation\ValidationClass.cs" />
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddMenagerViewModel.cs" />
+    <Compile Include="ViewModel\AddReportViewModel.cs" />
     <Compile Include="ViewModel\EmloyeeMainViewModel.cs" />
     <Compile Include="ViewModel\ShowEmployeesViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MenagerMainViewModel.cs" />
     <Compile Include="ViewModel\ShowEmplloyeesReadOnlyViewModel.cs" />
+    <Compile Include="ViewModel\ShowReportsReadOnlyViewModel.cs" />
+    <Compile Include="ViewModel\ShowReportsVIewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\AddEmployeeView.xaml.cs">
       <DependentUpon>AddEmployeeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddMenagerView.xaml.cs">
       <DependentUpon>AddMenagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddReport.xaml.cs">
+      <DependentUpon>AddReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EmloyeeMainView.xaml.cs">
       <DependentUpon>EmloyeeMainView.xaml</DependentUpon>
@@ -134,6 +140,12 @@
     </Compile>
     <Compile Include="View\ShowEmployeesReadOnly.xaml.cs">
       <DependentUpon>ShowEmployeesReadOnly.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowReports.xaml.cs">
+      <DependentUpon>ShowReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowReportsReadOnly.xaml.cs">
+      <DependentUpon>ShowReportsReadOnly.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +167,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EmloyeeMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +188,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ShowEmployeesReadOnly.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowReportsReadOnly.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

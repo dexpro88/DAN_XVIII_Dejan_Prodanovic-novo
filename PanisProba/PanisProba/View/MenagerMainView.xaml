@@ -69,7 +69,7 @@
              
             <Button Command="{Binding ShowEmoloyeesCommand}"
                     Content="Employees" />
-            <Button Command="{Binding AboutCommand}"
+            <Button Command="{Binding ShowReportsCommand}"
                     Content="Reports" />
             <Button Command="{Binding LogoutCommmand}"
                     Content="Logout" />
