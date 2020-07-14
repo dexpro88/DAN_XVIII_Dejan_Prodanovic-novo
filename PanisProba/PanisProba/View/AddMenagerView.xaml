@@ -76,7 +76,7 @@
             <Label Content="Position:" />
             <TextBox Text="{Binding Menager.Position}" />
             <Label Content="Acces Level:" />
-            <ComboBox DisplayMemberPath="AccessLevelType"
+            <ComboBox DisplayMemberPath="RoleName"
                       IsEditable="True"
                       ItemsSource="{Binding AccessLevelList, UpdateSourceTrigger=PropertyChanged}"
                       SelectedItem="{Binding AccessLevel, UpdateSourceTrigger=PropertyChanged}" />
@@ -88,14 +88,14 @@
             <Label Content="Username:" />
             <TextBox Text="{Binding Menager.Username}" />
             <Label Content="Password:" />
-            <TextBox Text="{Binding Menager.Password}" />
+            <TextBox Text="{Binding Menager.Passwd}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     Grid.Row="8">
             <Button Command="{Binding Save}"
                     Content="Save" />
-            <Button Command="{Binding Logout}"
+            <Button Command="{Binding LogoutCommand}"
                     Content="Logout" />
         </StackPanel>
     </Grid>

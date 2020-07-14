@@ -49,5 +49,51 @@ namespace PanisProba.Service
                 return null;
             }
         }
+
+        public tblEmployee GetManagerByJMBG(string JMBG)
+        {
+            try
+            {
+                using (WorkingHoursDBEntities context = new WorkingHoursDBEntities())
+                {
+                    tblEmployee managerFromDb = (from r in context.tblEmployees
+                                                 where r.JMBG == JMBG && r.IsMenager == true
+                                                 select r).First();
+
+
+                    return managerFromDb;
+
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
+        public tblEmployee GetManagerByUsername(string username)
+        {
+            try
+            {
+                using (WorkingHoursDBEntities context = new WorkingHoursDBEntities())
+                {
+                    tblEmployee managerFromDb = (from r in context.tblEmployees
+                                                 where r.Username == username && r.IsMenager == true
+                                                 select r).First();
+
+
+                    return managerFromDb;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
     }
 }

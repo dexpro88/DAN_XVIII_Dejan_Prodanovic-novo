@@ -9,7 +9,7 @@ namespace PanisProba.Service
 {
     class AccessLevelService:IAccessLevelService
     {
-        public List<tblAccessLevel> GetAllRoles()
+        public List<tblAccessLevel> GetAllAccessLevels()
         {
             try
             {
@@ -27,7 +27,7 @@ namespace PanisProba.Service
             }
         }
 
-        public tblAccessLevel GetRoleByID(int accesLevelId)
+        public tblAccessLevel GetAccessLevelByID(int accesLevelId)
         {
             try
             {

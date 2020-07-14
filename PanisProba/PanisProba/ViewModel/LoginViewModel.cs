@@ -1,7 +1,7 @@
 ﻿using PanisProba.Command;
-using PanisProba.Model;
+using PanisProba.EntityFrameworkModel;
+using PanisProba.Service;
 using PanisProba.View;
-using PanisService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,11 +87,11 @@ namespace PanisProba.ViewModel
                     addMenager.Show();
                     return;
                 }
-                List<Employee> employees = employeeService.GetAllEmployees();
-                Employee employeeDb = null;
+                List<tblEmployee> employees = employeeService.GetAllEmployees();
+                tblEmployee employeeDb = null;
                 foreach (var employee in employees)
                 {
-                    if (employee.Username.Equals(userName) && employee.Password.Equals(password))
+                    if (employee.Username.Equals(userName) && employee.Passwd.Equals(password))
                     {
                         employeeDb = employee;
                     }
@@ -102,7 +102,7 @@ namespace PanisProba.ViewModel
                 }
                 else
                 {
-                    if (employeeDb is Menager)
+                    if (employeeDb.IsMenager==true)
                     {
                         MenagerMainView menagerMainViewModel = new MenagerMainView();
                         view.Close();

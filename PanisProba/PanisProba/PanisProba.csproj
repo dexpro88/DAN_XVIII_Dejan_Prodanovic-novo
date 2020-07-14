@@ -95,6 +95,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkingHoursDataBaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Service\AccessLevelService.cs" />
+    <Compile Include="Service\EmployeeService.cs" />
+    <Compile Include="Service\IAccessLevelService.cs" />
+    <Compile Include="Service\IEmployeeService.cs" />
+    <Compile Include="Service\IMenagerService.cs" />
+    <Compile Include="Service\ISectorService.cs" />
+    <Compile Include="Service\MenagerService.cs" />
+    <Compile Include="Service\SectorService.cs" />
     <Compile Include="Validation\ValidationClass.cs" />
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddMenagerViewModel.cs" />

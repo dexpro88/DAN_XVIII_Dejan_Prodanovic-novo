@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace PanisProba.Service
 {
-    interface IMenagerService
+    interface IEmployeeService
     {
-        tblEmployee AddMenager(tblEmployee menager);
-        tblEmployee GetManagerByJMBG(string JMBG);
-        tblEmployee GetManagerByUsername(string username);
+        List<tblEmployee> GetAllEmployees();
     }
 }

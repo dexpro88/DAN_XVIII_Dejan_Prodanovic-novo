@@ -1,7 +1,9 @@
 ﻿using PanisProba.Command;
+using PanisProba.EntityFrameworkModel;
 using PanisProba.Model;
+using PanisProba.Service;
+using PanisProba.Validation;
 using PanisProba.View;
-using PanisService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,7 @@ namespace PanisProba.ViewModel
         AddMenagerView addMenager;
         IAccessLevelService accessLevelService;
         ISectorService sectorService;
-        IEmployeeService employeeService;
+         IMenagerService managerService;
         #region Constructor
         public AddMenagerViewModel(AddMenagerView addMenagerOpen)
         {
@@ -26,19 +28,19 @@ namespace PanisProba.ViewModel
             addMenager = addMenagerOpen;
             accessLevelService = new AccessLevelService();
             sectorService = new SectorService();
-            employeeService = new EmployeeService();
+            managerService = new MenagerService();
 
-            accessLevelList = accessLevelService.GetAccessLevels();
-            sectors = sectorService.GetSectors();
-            Menager = new Menager();
+            accessLevelList = accessLevelService.GetAllAccessLevels();
+            sectors = sectorService.GetAllSectors();
+            Menager = new tblEmployee();
         }
 
 
         #endregion
 
         #region Properties
-        private List<AccessLevel> accessLevelList;
-        public List<AccessLevel> AccessLevelList
+        private List<tblAccessLevel> accessLevelList;
+        public List<tblAccessLevel> AccessLevelList
         {
             get
             {
@@ -51,8 +53,8 @@ namespace PanisProba.ViewModel
             }
         }
 
-        private List<Sector> sectors;
-        public List<Sector> Sectors
+        private List<tblSector> sectors;
+        public List<tblSector> Sectors
         {
             get
             {
@@ -66,8 +68,8 @@ namespace PanisProba.ViewModel
         }
 
         
-        private Menager menager;
-        public Menager Menager
+        private tblEmployee menager;
+        public tblEmployee Menager
         {
             get
             {
@@ -79,8 +81,8 @@ namespace PanisProba.ViewModel
                 OnPropertyChanged("Menager");
             }
         }
-        private AccessLevel accessLevel;
-        public AccessLevel AccessLevel
+        private tblAccessLevel accessLevel;
+        public tblAccessLevel AccessLevel
         {
             get
             {
@@ -93,8 +95,8 @@ namespace PanisProba.ViewModel
             }
         }
 
-        private Sector sector;
-        public Sector Sector
+        private tblSector sector;
+        public tblSector Sector
         {
             get
             {
@@ -169,13 +171,43 @@ namespace PanisProba.ViewModel
         {
             try
             {
-                Menager newMenager = new Menager();
-                newMenager.Username = Menager.Username;
-                newMenager.Password = Menager.Password;
-                employeeService.AddEmployee(newMenager);
-                Menager = new Menager();
-                MenagerMainView mengerMain = new MenagerMainView();
-                mengerMain.Show();
+                //tblEmployee newMenager = new tblEmployee();
+                //newMenager.Username = Menager.Username;
+                //newMenager.Passwd = Menager.Passwd;
+                ////employeeService.AddEmployee(newMenager);
+
+                if (!ValidationClass.IsValidEmail(Menager.Email))
+                {
+                    MessageBox.Show("Email is not valid");
+                    return;
+                }
+                if (!ValidationClass.JMBGisValid(Menager.JMBG))
+                {
+                    MessageBox.Show("JMBG is not valid.");
+                    return;
+                }
+                if (managerService.GetManagerByJMBG(Menager.JMBG)!=null)
+                {
+                    MessageBox.Show("Manager with this JMBG already exists");
+                    return;
+                }
+                if (managerService.GetManagerByUsername(Menager.Username) != null)
+                {
+                    MessageBox.Show("Manager with this username already exists");
+                    return;
+                }
+                if (Menager.Salary<=0)
+                {
+                    MessageBox.Show("Salary has to be grater than zero.");
+                    return;
+                }
+                Menager.AccessLevelID = AccessLevel.ID;
+                Menager.SectorID = Sector.SectorID;
+                managerService.AddMenager(Menager);
+                Menager = new tblEmployee();
+                MessageBox.Show("You successfully added a manager.");
+                LoginView loginMain = new LoginView();
+                loginMain.Show();
                 addMenager.Close();
 
             }
@@ -188,8 +220,11 @@ namespace PanisProba.ViewModel
         private bool CanSaveExecute()
         {
 
-            if (String.IsNullOrEmpty(Menager.Username) ||
-                String.IsNullOrEmpty(Menager.Password))
+            if (String.IsNullOrEmpty(Menager.Username) || String.IsNullOrEmpty(Menager.FirstName) ||
+                String.IsNullOrEmpty(Menager.LastName) || String.IsNullOrEmpty(Menager.JMBG) ||
+                String.IsNullOrEmpty(Menager.AccountNumber) || String.IsNullOrEmpty(Menager.Email) ||
+                Sector == null || AccessLevel == null ||
+                String.IsNullOrEmpty(Menager.Passwd))
             {
                 return false;
             }
